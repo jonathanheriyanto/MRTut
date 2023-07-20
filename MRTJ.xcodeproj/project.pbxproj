@@ -13,6 +13,11 @@
 		380FC1E52A67B927004F16CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380FC1E42A67B927004F16CB /* Preview Assets.xcassets */; };
 		380FC1E72A67B927004F16CB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380FC1E62A67B927004F16CB /* Persistence.swift */; };
 		380FC1EA2A67B927004F16CB /* MRTJ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 380FC1E82A67B927004F16CB /* MRTJ.xcdatamodeld */; };
+		380FC1F42A67BB89004F16CB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F32A67BB89004F16CB /* FirebaseAnalytics */; };
+		380FC1F62A67BB89004F16CB /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F52A67BB89004F16CB /* FirebaseDatabase */; };
+		380FC1F82A67BB89004F16CB /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F72A67BB89004F16CB /* FirebaseDatabaseSwift */; };
+		380FC1FA2A67BB89004F16CB /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F92A67BB89004F16CB /* FirebaseMessaging */; };
+		380FC1FC2A67BB89004F16CB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1FB2A67BB89004F16CB /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +28,8 @@
 		380FC1E42A67B927004F16CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		380FC1E62A67B927004F16CB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		380FC1E92A67B927004F16CB /* MRTJ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MRTJ.xcdatamodel; sourceTree = "<group>"; };
+		380FC1F02A67B956004F16CB /* MRTJRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MRTJRelease.entitlements; sourceTree = "<group>"; };
+		380FC1F12A67B963004F16CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +37,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380FC1FA2A67BB89004F16CB /* FirebaseMessaging in Frameworks */,
+				380FC1F82A67BB89004F16CB /* FirebaseDatabaseSwift in Frameworks */,
+				380FC1F62A67BB89004F16CB /* FirebaseDatabase in Frameworks */,
+				380FC1FC2A67BB89004F16CB /* FirebaseStorage in Frameworks */,
+				380FC1F42A67BB89004F16CB /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +67,8 @@
 		380FC1DC2A67B926004F16CB /* MRTJ */ = {
 			isa = PBXGroup;
 			children = (
+				380FC1F12A67B963004F16CB /* Info.plist */,
+				380FC1F02A67B956004F16CB /* MRTJRelease.entitlements */,
 				380FC1DD2A67B926004F16CB /* MRTJApp.swift */,
 				380FC1DF2A67B926004F16CB /* ContentView.swift */,
 				380FC1E12A67B927004F16CB /* Assets.xcassets */,
@@ -89,6 +103,13 @@
 			dependencies = (
 			);
 			name = MRTJ;
+			packageProductDependencies = (
+				380FC1F32A67BB89004F16CB /* FirebaseAnalytics */,
+				380FC1F52A67BB89004F16CB /* FirebaseDatabase */,
+				380FC1F72A67BB89004F16CB /* FirebaseDatabaseSwift */,
+				380FC1F92A67BB89004F16CB /* FirebaseMessaging */,
+				380FC1FB2A67BB89004F16CB /* FirebaseStorage */,
+			);
 			productName = MRTJ;
 			productReference = 380FC1DA2A67B926004F16CB /* MRTJ.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +138,9 @@
 				Base,
 			);
 			mainGroup = 380FC1D12A67B926004F16CB;
+			packageReferences = (
+				380FC1F22A67BB89004F16CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 380FC1DB2A67B926004F16CB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -272,27 +296,35 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MRTJ/Preview Content\"";
-				DEVELOPMENT_TEAM = GT493Z58L2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GT493Z58L2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MRTJ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.MRTJ;
+				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.MRTut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MRTJProfile;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -301,27 +333,37 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = MRTJ/MRTJRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MRTJ/Preview Content\"";
-				DEVELOPMENT_TEAM = GT493Z58L2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GT493Z58L2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MRTJ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.MRTJ;
+				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.MRTut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MRTJProfile;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -347,6 +389,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		380FC1F22A67BB89004F16CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		380FC1F32A67BB89004F16CB /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 380FC1F22A67BB89004F16CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		380FC1F52A67BB89004F16CB /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 380FC1F22A67BB89004F16CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		380FC1F72A67BB89004F16CB /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 380FC1F22A67BB89004F16CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		380FC1F92A67BB89004F16CB /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 380FC1F22A67BB89004F16CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		380FC1FB2A67BB89004F16CB /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 380FC1F22A67BB89004F16CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		380FC1E82A67B927004F16CB /* MRTJ.xcdatamodeld */ = {
