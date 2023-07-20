@@ -18,6 +18,7 @@
 		380FC1F82A67BB89004F16CB /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F72A67BB89004F16CB /* FirebaseDatabaseSwift */; };
 		380FC1FA2A67BB89004F16CB /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F92A67BB89004F16CB /* FirebaseMessaging */; };
 		380FC1FC2A67BB89004F16CB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1FB2A67BB89004F16CB /* FirebaseStorage */; };
+		380FC1FE2A68DD19004F16CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 380FC1FD2A68DD19004F16CB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		380FC1E92A67B927004F16CB /* MRTJ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MRTJ.xcdatamodel; sourceTree = "<group>"; };
 		380FC1F02A67B956004F16CB /* MRTJRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MRTJRelease.entitlements; sourceTree = "<group>"; };
 		380FC1F12A67B963004F16CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		380FC1FD2A68DD19004F16CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				380FC1F12A67B963004F16CB /* Info.plist */,
+				380FC1FD2A68DD19004F16CB /* GoogleService-Info.plist */,
 				380FC1F02A67B956004F16CB /* MRTJRelease.entitlements */,
 				380FC1DD2A67B926004F16CB /* MRTJApp.swift */,
 				380FC1DF2A67B926004F16CB /* ContentView.swift */,
@@ -157,6 +160,7 @@
 			files = (
 				380FC1E52A67B927004F16CB /* Preview Assets.xcassets in Resources */,
 				380FC1E22A67B927004F16CB /* Assets.xcassets in Resources */,
+				380FC1FE2A68DD19004F16CB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +322,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.MRTut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MRTJProfile;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = FinalProfile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -357,7 +361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.MRTut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MRTJProfile;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = FinalProfile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
