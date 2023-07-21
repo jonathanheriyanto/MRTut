@@ -109,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				38F5D3772A6A326C008673B3 /* ButtonView.swift */,
-				38F5D3762A6A326B008673B3 /* PromoEventView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -163,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				F683BCAA2A6A2C7400CC71A0 /* stationInformationView.swift */,
+				38F5D3762A6A326B008673B3 /* PromoEventView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

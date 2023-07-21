@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PromoEventView: View {
+    var type: String
     var epTitle: String
     var epDesc: String
     var epImage: String
@@ -44,13 +45,21 @@ struct PromoEventView: View {
             Text("\(epDesc)")
                 .font(.callout)
                 .padding(.top)
+            
+            Spacer()
+            
+            if(type == "event"){
+                ButtonView(buttonName: "Buy Ticket")
+            }
         }
+        .padding()
     }
 }
 
 struct PromoEventView_Previews: PreviewProvider {
     static var previews: some View {
         PromoEventView(
+            type: "event",
             epTitle: "WAKTU INDONESIA BERDANSA FESTIVAL",
             epDesc: "WIB merupakan festival musik nasional berskala besar yang diadakan di ruang-ruang publik kota metropolitan di Indonesia dengan membawa kampanye positif bagi kaum muda di Indonesia. Sekumpulan anak muda dan pekerja di industri kreatif dari berbagai latar belakang yang berbeda namun memiliki visi dan misi yang sama, yaitu menciptakan wadah penyaluran hasrat kebutuhan akan hiburan dan kreatifitas",
             epImage: "WIB",
