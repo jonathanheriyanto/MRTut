@@ -121,6 +121,7 @@ struct MRTJApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(vm)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
