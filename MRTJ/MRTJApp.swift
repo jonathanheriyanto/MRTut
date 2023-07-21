@@ -113,6 +113,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 
 @main
 struct MRTJApp: App {
+    @StateObject var vm = StationInformationViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     let persistenceController = PersistenceController.shared

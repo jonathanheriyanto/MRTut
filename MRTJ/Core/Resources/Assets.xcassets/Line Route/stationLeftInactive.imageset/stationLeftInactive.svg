@@ -1,0 +1,6 @@
+<svg width="64" height="32" viewBox="0 0 64 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M54 22L30 22L30 10L54 10L60 16L54 22Z" fill="#EFEFF0"/>
+<path d="M60 16L54 22L58 22L64 16L58 10L54 10L60 16Z" fill="#EFEFF0"/>
+<circle cx="16" cy="16" r="16" transform="matrix(-1 0 0 1 32 0)" fill="white"/>
+<circle cx="16" cy="16" r="13" transform="matrix(-1 0 0 1 32 0)" stroke="#767680" stroke-opacity="0.12" stroke-width="6"/>
+</svg>
