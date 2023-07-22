@@ -17,6 +17,10 @@
 		380FC1F82A67BB89004F16CB /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F72A67BB89004F16CB /* FirebaseDatabaseSwift */; };
 		380FC1FA2A67BB89004F16CB /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F92A67BB89004F16CB /* FirebaseMessaging */; };
 		380FC1FC2A67BB89004F16CB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1FB2A67BB89004F16CB /* FirebaseStorage */; };
+		38F5D3782A6A326C008673B3 /* PromoEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F5D3762A6A326B008673B3 /* PromoEventView.swift */; };
+		38F5D3792A6A326C008673B3 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F5D3772A6A326C008673B3 /* ButtonView.swift */; };
+		38F5D37D2A6A681F008673B3 /* stationDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F5D37C2A6A681F008673B3 /* stationDetailSheet.swift */; };
+		38F5D37F2A6A6E31008673B3 /* iconDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F5D37E2A6A6E31008673B3 /* iconDescView.swift */; };
 		B11DAAB02A6A3393005332C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B11DAAAF2A6A3393005332C8 /* GoogleService-Info.plist */; };
 		B11DAAB42A6A3562005332C8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DAAB32A6A3562005332C8 /* Event.swift */; };
 		B11DAAB62A6A356D005332C8 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DAAB52A6A356D005332C8 /* Station.swift */; };
@@ -61,6 +65,10 @@
 		380FC1E92A67B927004F16CB /* MRTJ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MRTJ.xcdatamodel; sourceTree = "<group>"; };
 		380FC1F12A67B963004F16CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		380FC1FF2A68DE64004F16CB /* MRTJ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MRTJ.entitlements; sourceTree = "<group>"; };
+		38F5D3762A6A326B008673B3 /* PromoEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoEventView.swift; sourceTree = "<group>"; };
+		38F5D3772A6A326C008673B3 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		38F5D37C2A6A681F008673B3 /* stationDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stationDetailSheet.swift; sourceTree = "<group>"; };
+		38F5D37E2A6A6E31008673B3 /* iconDescView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconDescView.swift; sourceTree = "<group>"; };
 		B11DAAAF2A6A3393005332C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B11DAAB32A6A3562005332C8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		B11DAAB52A6A356D005332C8 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
@@ -152,6 +160,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		38F5D3752A6A323B008673B3 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				38F5D3772A6A326C008673B3 /* ButtonView.swift */,
+				38F5D37E2A6A6E31008673B3 /* iconDescView.swift */,
+			);
+			path = Component;
 		B11DAAB72A6A3FA4005332C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +177,7 @@
 		F683BC9C2A6A2C6800CC71A0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				38F5D3752A6A323B008673B3 /* Component */,
 				F683BC9D2A6A2C6800CC71A0 /* Resources */,
 			);
 			path = Core;
@@ -208,6 +224,8 @@
 		F683BCA92A6A2C7400CC71A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				38F5D3762A6A326B008673B3 /* PromoEventView.swift */,
+				38F5D37C2A6A681F008673B3 /* stationDetailSheet.swift */,
 				F683BCAA2A6A2C7400CC71A0 /* StationInformationView.swift */,
 				B11DAAE42A6C057F005332C8 /* ScheduleListView.swift */,
 			);
@@ -330,14 +348,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F5D37F2A6A6E31008673B3 /* iconDescView.swift in Sources */,
 				F683BCAB2A6A2C7400CC71A0 /* StationInformationViewModel.swift in Sources */,
 				B11DAAB42A6A3562005332C8 /* Event.swift in Sources */,
 				380FC1E72A67B927004F16CB /* Persistence.swift in Sources */,
+				38F5D3792A6A326C008673B3 /* ButtonView.swift in Sources */,
+				F683BCAD2A6A2C7400CC71A0 /* stationInformationView.swift in Sources */,
+				38F5D37D2A6A681F008673B3 /* stationDetailSheet.swift in Sources */,
 				F683BCAD2A6A2C7400CC71A0 /* StationInformationView.swift in Sources */,
 				380FC1E02A67B926004F16CB /* ContentView.swift in Sources */,
 				380FC1EA2A67B927004F16CB /* MRTJ.xcdatamodeld in Sources */,
 				B11DAAB62A6A356D005332C8 /* Station.swift in Sources */,
 				F683BCAC2A6A2C7400CC71A0 /* lottieAnimation.swift in Sources */,
+				38F5D3782A6A326C008673B3 /* PromoEventView.swift in Sources */,
 				B11DAAE52A6C057F005332C8 /* ScheduleListView.swift in Sources */,
 				380FC1DE2A67B926004F16CB /* MRTJApp.swift in Sources */,
 				F683BCA32A6A2C6800CC71A0 /* AssetName.swift in Sources */,
@@ -489,7 +512,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.MRTut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = FinalProfile;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MRTJFinalProfile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -528,7 +551,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.MRTut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = FinalProfile;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MRTJFinalProfile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
