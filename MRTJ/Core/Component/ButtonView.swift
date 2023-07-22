@@ -12,9 +12,9 @@ struct ButtonView: View {
     
     var body: some View {
         Text("\(buttonName)")
-            .font(.title3)
+            .font(.headline)
             .fontWeight(.semibold)
-            .frame(maxWidth: .infinity, minHeight: 44)
+            .frame(maxWidth: .infinity, minHeight: 48)
             .foregroundColor(.white)
             .background(.green)
             .cornerRadius(8)

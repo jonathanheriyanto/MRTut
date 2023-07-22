@@ -21,11 +21,11 @@ struct Event {
 }
 
 struct StationInformationView: View {
-    
     @State var selectedOption = "Schedule"
+    @State var sheetPresented: Bool = false
     @EnvironmentObject var vm: StationInformationViewModel
     private var stations = ["Lebak Bulus Grab", "Fatmawati Indomaret", "Cipete Raya", "Haji Nawi", "Blok A", "Blok M BCA", "ASEAN", "Senayan", "Istora Mandiri", "Bendungan Hilir", "Setiabudi Astra", "Dukuh Atas BNI", "Bundaran HI"]
-
+    
     @State private var tappedIndex: Int = -1
     let condensedBold = UIFont.systemFont(ofSize: 31, weight: .bold, width: .condensed)
     let condensedHeavy = UIFont.systemFont(ofSize: 24, weight: .heavy, width: .condensed)
@@ -51,13 +51,23 @@ struct StationInformationView: View {
                             .position(x:390, y:249)
                             .position(x: geometry.size.width * 0.5, y:geometry.size.height / 10)
                         
-                        Text("LEBAK BULUS GRAB")
-                            .font(Font(condensedBold))
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 35)
-                            .position(x: geometry.size.width * 0.35, y: geometry.size.height / 5.5)
+                        HStack{
+                            Text("LEBAK BULUS GRAB")
+                                .font(Font(condensedBold))
+                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                            Button {
+                                sheetPresented.toggle()
+                            } label: {
+                                Image(systemName: "info.circle")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                            .sheet(isPresented: $sheetPresented) {
+                                stationDetailSheet(station: "Lebak Bulus Grab")
+                            }
+                        }
+                        .position(x: geometry.size.width * 0.37, y: geometry.size.height / 5.5)
                         
                         //Header Frame
                         ZStack{
@@ -65,10 +75,10 @@ struct StationInformationView: View {
                                 .stroke(Color(AssetName.green), lineWidth: 2)
                                 .background(RoundedRectangle(cornerRadius: 16).fill(.white))
                                 .frame(width: 358, height: 72)
-                                
-
+                            
+                            
                             VStack(alignment: .leading){
-
+                                
                                 //Date and Time
                                 HStack{
                                     LottieIcon(animationName: AssetName.liveAnimation)
@@ -83,7 +93,7 @@ struct StationInformationView: View {
                                     HStack{
                                         Image(systemName: "person.3.fill")
                                             .frame(width: 28, height: 16)
-                
+                                        
                                         Text("Not Too Busy")
                                     }
                                     
@@ -97,7 +107,7 @@ struct StationInformationView: View {
                                     }
                                     
                                 }.font(.system(size:13))
-
+                                
                             }
                             .padding(.top, 8)
                             .padding(.bottom, 8)
@@ -105,6 +115,7 @@ struct StationInformationView: View {
                             
                         }
                         .position(x: geometry.size.width * 0.5,y: geometry.size.height / 3.7)
+                        
                     }
                     
                     
@@ -121,13 +132,13 @@ struct StationInformationView: View {
                                                     tappedIndex = tappedIndex == index ? -1 : index
                                                 }
                                         }else {
-                                                Image(AssetName.stationLeftInactive)
-                                                    .zIndex(tappedIndex == index ? 1.0 : 0.0)
-                                                    .onTapGesture {
-                                                        tappedIndex = tappedIndex == index ? -1 : index
-                                                    }
+                                            Image(AssetName.stationLeftInactive)
+                                                .zIndex(tappedIndex == index ? 1.0 : 0.0)
+                                                .onTapGesture {
+                                                    tappedIndex = tappedIndex == index ? -1 : index
+                                                }
                                         }
-
+                                        
                                     }else if index == stations.count - 1 {
                                         if tappedIndex == index {
                                             Image(AssetName.stationRightActive)
@@ -193,15 +204,15 @@ struct StationInformationView: View {
                             HStack{
                                 Text("To Lebak Bulus")
                                     .padding(.trailing, 10)
-                                        
-                                    Image(AssetName.leftArrow)
-                                        .padding(.leading, 22)
-
-                                    Image(AssetName.rightArrow)
-                                        .padding(.trailing, 22)
                                 
-                                    Text ("To Bundaran HI")
-                                    
+                                Image(AssetName.leftArrow)
+                                    .padding(.leading, 22)
+                                
+                                Image(AssetName.rightArrow)
+                                    .padding(.trailing, 22)
+                                
+                                Text ("To Bundaran HI")
+                                
                             }
                             .position(x: geometry.size.width * 0.5, y: geometry.size.height / 1.85)
                             
@@ -212,11 +223,11 @@ struct StationInformationView: View {
                                         .stroke(Color(AssetName.green), lineWidth: 2)
                                         .background(RoundedRectangle(cornerRadius: 16).fill(.white))
                                         .frame(width: 171, height: 64)
-
+                                    
                                     VStack{
                                         Text("17:01")
                                             .font(Font(condensedHeavy))
-
+                                        
                                         Text("in 1 minute")
                                             .font(.system(size: 13))
                                             .opacity(0.5)
@@ -224,7 +235,7 @@ struct StationInformationView: View {
                                     }.padding(.horizontal, 8)
                                 }
                                 .position(x: geometry.size.width * 0.27, y: geometry.size.height / 1.6)
-
+                                
                                 //Rectangle kedua
                                 ZStack(alignment: .leading){ //setiap komponen rectangle
                                     //Schedule
@@ -232,12 +243,12 @@ struct StationInformationView: View {
                                         .stroke(Color(AssetName.green), lineWidth: 2)
                                         .background(RoundedRectangle(cornerRadius: 16).fill(.white))
                                         .frame(width: 171, height: 64)
-
+                                    
                                     VStack{
                                         Text("17:01")
                                             .font(Font(condensedHeavy))
                                             .font(.system(size: 24))
-
+                                        
                                         Text("in 1 minute")
                                             .font(.system(size: 13))
                                             .opacity(0.5)
@@ -246,7 +257,7 @@ struct StationInformationView: View {
                                 }
                                 .position(x: geometry.size.width * 0.27, y: geometry.size.height / 4.5)
                             }
-                        //EVENT
+                            //EVENT
                         }else if selectedOption == "Event"{
                             VStack{
                                 ZStack(alignment: .leading){
@@ -256,17 +267,17 @@ struct StationInformationView: View {
                                             .padding(0)
                                             .frame(width: 40, height: 40, alignment: .leading)
                                             .cornerRadius(4)
-                                       
-                                            VStack(alignment: .leading){
-                                                Text("Roti'O Buy 4 Get 5")
-                                                    .font(.system(size:20))
-                                                    .fontWeight(.medium)
-                                                
-                                                Text("Promotion")
-                                                    .font(.system(size:13))
-                                                    .fontWeight(.light)
-                                            }.padding(.trailing, 50)
+                                        
+                                        VStack(alignment: .leading){
+                                            Text("Roti'O Buy 4 Get 5")
+                                                .font(.system(size:20))
+                                                .fontWeight(.medium)
                                             
+                                            Text("Promotion")
+                                                .font(.system(size:13))
+                                                .fontWeight(.light)
+                                        }.padding(.trailing, 50)
+                                        
                                         NavigationLink {
                                             //ini nnti ganti data dri database
                                             PromoEventView(
@@ -291,9 +302,9 @@ struct StationInformationView: View {
                                     .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.06), radius: 1, x: 0, y: 1)
                                     .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.1), radius: 1.5, x: 0, y: 1)
                                     .overlay(
-                                      RoundedRectangle(cornerRadius: 8)
-                                        .inset(by: 0.5)
-                                        .stroke(Color(red: 0.93, green: 0.93, blue: 0.94), lineWidth: 1)
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .inset(by: 0.5)
+                                            .stroke(Color(red: 0.93, green: 0.93, blue: 0.94), lineWidth: 1)
                                     )
                                 }
                                 .position(x: geometry.size.width * 0.5, y: geometry.size.height / 1.75)
@@ -304,7 +315,7 @@ struct StationInformationView: View {
             }
         }
         
-       
+        
     }
 }
 
