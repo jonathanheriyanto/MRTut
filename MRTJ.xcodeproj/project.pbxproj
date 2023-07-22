@@ -17,7 +17,6 @@
 		380FC1F82A67BB89004F16CB /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F72A67BB89004F16CB /* FirebaseDatabaseSwift */; };
 		380FC1FA2A67BB89004F16CB /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1F92A67BB89004F16CB /* FirebaseMessaging */; };
 		380FC1FC2A67BB89004F16CB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 380FC1FB2A67BB89004F16CB /* FirebaseStorage */; };
-		38537C4B2A6C1FDD00F498BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38537C4A2A6C1FDC00F498BB /* GoogleService-Info.plist */; };
 		38537C4F2A6C241800F498BB /* iconDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38537C4D2A6C241800F498BB /* iconDescView.swift */; };
 		38537C502A6C241800F498BB /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38537C4E2A6C241800F498BB /* ButtonView.swift */; };
 		38537C532A6C244500F498BB /* stationDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38537C512A6C244500F498BB /* stationDetailSheet.swift */; };
@@ -66,7 +65,6 @@
 		380FC1E92A67B927004F16CB /* MRTJ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MRTJ.xcdatamodel; sourceTree = "<group>"; };
 		380FC1F12A67B963004F16CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		380FC1FF2A68DE64004F16CB /* MRTJ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MRTJ.entitlements; sourceTree = "<group>"; };
-		38537C4A2A6C1FDC00F498BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		38537C4D2A6C241800F498BB /* iconDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iconDescView.swift; sourceTree = "<group>"; };
 		38537C4E2A6C241800F498BB /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		38537C512A6C244500F498BB /* stationDetailSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stationDetailSheet.swift; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				F683BCAE2A6A2E6700CC71A0 /* Application */,
 				380FC1FF2A68DE64004F16CB /* MRTJ.entitlements */,
 				380FC1F12A67B963004F16CB /* Info.plist */,
-				38537C4A2A6C1FDC00F498BB /* GoogleService-Info.plist */,
 				F683BCA42A6A2C7400CC71A0 /* Feature */,
 				F683BC9C2A6A2C6800CC71A0 /* Core */,
 				380FC1E82A67B927004F16CB /* MRTJ.xcdatamodeld */,
@@ -340,7 +337,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				380FC1E52A67B927004F16CB /* Preview Assets.xcassets in Resources */,
-				38537C4B2A6C1FDD00F498BB /* GoogleService-Info.plist in Resources */,
 				F683BCA12A6A2C6800CC71A0 /* Assets.xcassets in Resources */,
 				F683BCA22A6A2C6800CC71A0 /* pulse-animation.json in Resources */,
 			);
