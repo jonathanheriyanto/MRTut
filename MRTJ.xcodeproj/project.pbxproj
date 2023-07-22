@@ -22,6 +22,7 @@
 		38537C502A6C241800F498BB /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38537C4E2A6C241800F498BB /* ButtonView.swift */; };
 		38537C532A6C244500F498BB /* stationDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38537C512A6C244500F498BB /* stationDetailSheet.swift */; };
 		38537C542A6C244500F498BB /* PromoEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38537C522A6C244500F498BB /* PromoEventView.swift */; };
+		38B5401F2A6C2B8E0019AACF /* problemDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B5401E2A6C2B8E0019AACF /* problemDetailSheet.swift */; };
 		B11DAAB42A6A3562005332C8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DAAB32A6A3562005332C8 /* Event.swift */; };
 		B11DAAB62A6A356D005332C8 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DAAB52A6A356D005332C8 /* Station.swift */; };
 		B11DAAB92A6A3FA4005332C8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B11DAAB82A6A3FA4005332C8 /* FirebaseFirestore */; };
@@ -70,6 +71,7 @@
 		38537C4E2A6C241800F498BB /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		38537C512A6C244500F498BB /* stationDetailSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stationDetailSheet.swift; sourceTree = "<group>"; };
 		38537C522A6C244500F498BB /* PromoEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoEventView.swift; sourceTree = "<group>"; };
+		38B5401E2A6C2B8E0019AACF /* problemDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = problemDetailSheet.swift; sourceTree = "<group>"; };
 		B11DAAB32A6A3562005332C8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		B11DAAB52A6A356D005332C8 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		B11DAAE42A6C057F005332C8 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				F683BCAA2A6A2C7400CC71A0 /* StationInformationView.swift */,
 				38537C522A6C244500F498BB /* PromoEventView.swift */,
 				38537C512A6C244500F498BB /* stationDetailSheet.swift */,
+				38B5401E2A6C2B8E0019AACF /* problemDetailSheet.swift */,
 				B11DAAE42A6C057F005332C8 /* ScheduleListView.swift */,
 			);
 			path = Views;
@@ -350,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B5401F2A6C2B8E0019AACF /* problemDetailSheet.swift in Sources */,
 				38537C4F2A6C241800F498BB /* iconDescView.swift in Sources */,
 				F683BCAB2A6A2C7400CC71A0 /* StationInformationViewModel.swift in Sources */,
 				B11DAAB42A6A3562005332C8 /* Event.swift in Sources */,
