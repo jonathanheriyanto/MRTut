@@ -38,7 +38,6 @@ struct AssetName{
     
     //MARK: Events
     static let rotio = "rotio"
-    static let male = "mrt-male"
     
 }
 

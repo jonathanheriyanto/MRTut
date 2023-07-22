@@ -9,11 +9,8 @@ import SwiftUI
 import Lottie
 
 struct StationInformationView: View {
-    @State var selectedOption = "Schedule"
-  
-    @State var sheetPresented: Bool = false
-    private var stations = ["Lebak Bulus Grab", "Fatmawati Indomaret", "Cipete Raya", "Haji Nawi", "Blok A", "Blok M BCA", "ASEAN", "Senayan", "Istora Mandiri", "Bendungan Hilir", "Setiabudi Astra", "Dukuh Atas BNI", "Bundaran HI"]
     
+    @State var selectedOption = "Schedule"
     @EnvironmentObject var vm: StationViewModel
 
     @State private var tappedIndex: Int = -1
@@ -49,45 +46,22 @@ struct StationInformationView: View {
                     
                     //Header Frame
                     ZStack{
-                        Image(AssetName.stationLebakBulus)
-                            .resizable()
-                            .scaledToFill()
-                            .ignoresSafeArea()
-                            .frame(width: 393, height: 193)
-                            .position(x: geometry.size.width * 0.5, y:geometry.size.height / 7.5)
-                            .background(Color.clear)
-                        
-                        Color(.black)
-                            .opacity(0.2)
-                            .frame(width: 393, height: 250)
-                            .position(x:390, y:249)
-                            .position(x: geometry.size.width * 0.5, y:geometry.size.height / 10)
-                        
-                        HStack{
-                            Text("LEBAK BULUS GRAB")
-                                .font(Font(condensedBold))
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                            Button {
-                                sheetPresented.toggle()
-                            } label: {
-                                Image(systemName: "info.circle")
-                                    .foregroundColor(.white)
-                                    .fontWeight(.bold)
-                            }
-                            .sheet(isPresented: $sheetPresented) {
-                                stationDetailSheet(station: "Lebak Bulus Grab")
-                            }
-                        }
-                        .position(x: geometry.size.width * 0.37, y: geometry.size.height / 5.5)
-                        
-                        //Header Frame
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color(AssetName.green), lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 16).fill(.white))
-                                .frame(width: 358, height: 72)
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color(AssetName.green), lineWidth: 2)
+                            .background(RoundedRectangle(cornerRadius: 16).fill(.white))
+                            .frame(width: 358, height: 72)
                             
+
+                        VStack(alignment: .leading){
+
+                            //Date and Time
+                            HStack{
+                                LottieIcon(animationName: AssetName.liveAnimation)
+                                    .frame(width: 21, height: 21)
+                                Text(vm.formattedDate())
+                                + Text(", ")
+                                + Text(vm.getCurrentTime())
+                            }.font(.system(size: 13))
                             
                             HStack(spacing: 68){
                                 //Crowd Status
@@ -99,49 +73,24 @@ struct StationInformationView: View {
                                 }
                                 
                                 
-                                //Date and Time
+                                //Service Status
                                 HStack{
-                                    LottieIcon(animationName: AssetName.liveAnimation)
-                                        .frame(width: 21, height: 21)
-                                    Text(vm.formattedDate())
-                                    + Text(", ")
-                                    + Text(vm.getCurrentTime())
-                                }.font(.system(size: 13))
                                     Image(systemName: vm.station.service == "Normal" ? "checkmark.circle.fill" : "exclamationmark.triangle.fill")
                                         .frame(width: 16, height: 16)
                                         .foregroundColor(vm.station.service == "Normal" ? .green : .red)
                                     Text(vm.station.service == "Normal" ? "Normal service" : "Temporary Closed")
                                 }
                                 
-                                HStack(spacing: 68){
-                                    //Crowd Status
-                                    HStack{
-                                        Image(systemName: "person.3.fill")
-                                            .frame(width: 28, height: 16)
-                                        
-                                        Text("Not Too Busy")
-                                    }
-                                    
-                                    
-                                    //Service Status
-                                    HStack{
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .frame(width: 16, height: 16)
-                                            .foregroundColor(.green)
-                                        Text("Normal service")
-                                    }
-                                    
-                                }.font(.system(size:13))
-                                
-                            }
-                            .padding(.top, 8)
-                            .padding(.bottom, 8)
-                            .padding(.horizontal, 24)
-                            
+                            }.font(.system(size:13))
+
                         }
-                        .position(x: geometry.size.width * 0.5,y: geometry.size.height / 3.7)
+                        .padding(.top, 8)
+                        .padding(.bottom, 8)
+                        .padding(.horizontal, 24)
                         
                     }
+                    .position(x: geometry.size.width * 0.5,y: geometry.size.height / 3.5)
+                }
                 
                 //Scrollable Station Line
                 ScrollView(.horizontal, showsIndicators: false){
@@ -181,17 +130,8 @@ struct StationInformationView: View {
                                             tappedIndex = tappedIndex == index ? -1 : index
                                             vm.station = vm.stations[index]
                                         }
-                                    }
                                 }
-                            }
-                            .padding(.leading, 30)
-                            HStack(spacing: -10){
-                                ForEach(stations.indices){ index in
-                                    Text(stations[index])
-                                        .font(.footnote)
-                                        .fontWeight(.bold)
-                                        .multilineTextAlignment(.center)
-                                        .frame(width: 98)
+                                
                             }else{
                                 if index == tappedIndex{
                                     Image(AssetName.stationMiddleActive)
@@ -268,45 +208,32 @@ struct StationInformationView: View {
                                                 .fontWeight(.light)
                                         }.padding(.trailing, 50)
                                         
-                                        NavigationLink {
-                                            //ini nnti ganti data dri database
-                                            PromoEventView(
-                                                type: "promo",
-                                                epTitle: "ROTI’O BUY 4 GET 5",
-                                                epDesc: "Promo hanya berlaku untuk pembelian di tempat. *S&K berlaku",
-                                                epImage: "brotio",
-                                                epLocation: "Stasiun MRT Lebak Bulus",
-                                                epDate: "20 - 31 Juli 2023",
-                                                epTime: "06:00 - 21:00"
-                                            )
-                                        } label: {
-                                            Text("See More")
-                                                .font(.system(size:13))
-                                                .fontWeight(.light)
-                                        }
-                                    }
-                                    .padding(8)
-                                    .frame(width: 361, height: 64, alignment: .leading)
-                                    .background(.white)
-                                    .cornerRadius(8)
-                                    .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.06), radius: 1, x: 0, y: 1)
-                                    .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.1), radius: 1.5, x: 0, y: 1)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .inset(by: 0.5)
-                                            .stroke(Color(red: 0.93, green: 0.93, blue: 0.94), lineWidth: 1)
-                                    )
+                                        Text("See More")
+                                            .font(.system(size:13))
+                                            .fontWeight(.light)
+                                    
+
                                 }
-                                .position(x: geometry.size.width * 0.5, y: geometry.size.height / 1.75)
+                                .padding(8)
+                                .frame(width: 361, height: 64, alignment: .leading)
+                                .background(.white)
+                                .cornerRadius(8)
+                                .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.06), radius: 1, x: 0, y: 1)
+                                .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.1), radius: 1.5, x: 0, y: 1)
+                                .overlay(
+                                  RoundedRectangle(cornerRadius: 8)
+                                    .inset(by: 0.5)
+                                    .stroke(Color(red: 0.93, green: 0.93, blue: 0.94), lineWidth: 1)
+                                )
                             }
+                            .position(x: geometry.size.width * 0.5, y: geometry.size.height / 1.6)
                         }
                     }
                 }
                 .zIndex(-1)
             }
         }
-        
-        
+       
     }
 }
 
