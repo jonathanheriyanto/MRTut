@@ -39,7 +39,7 @@ class StationViewModel: ObservableObject{
                     let id = data["id"] as? String ?? ""
                     let name = data["station_name"] as? String ?? ""
                     let live = data["station_live"] as? String ?? ""
-                    let expectedDuration = data["station_expected_duration"] as? String ?? ""
+                    let expectedDuration = data["station_expect_duration"] as? String ?? ""
                     let service = data["station_service"] as? String ?? ""
                     let cause = data["station_cause"] as? String ?? ""
                     let situation = data["station_situation"] as? String ?? ""
@@ -71,13 +71,30 @@ class StationViewModel: ObservableObject{
         
     }
     
+    func updateStation(stationId: String, stationService: String, stationSituation: String, stationCause: String, stationExpectDuration: String, stationLive: String, stationName: String) {
+        let db = Firestore.firestore()
+        let stationRef = db.collection("train_stations").document(stationId)
+        
+        let newData = ["station_cause": stationCause,"station_expect_duration": stationExpectDuration, "station_live":stationLive, "station_service":stationService, "station_situation":stationSituation, "station_name":stationName]
+        
+        stationRef.updateData(newData) { error in
+            if let error = error {
+                print("Error updating event: \(error.localizedDescription)")
+            } else {
+                print("Event updated successfully!")
+            }
+        }
+        fetchStations()
+        
+    }
+    
     //events
-    func fetchEvent(){
+    func fetchEvent() {
         events.removeAll()
         let db = Firestore.firestore()
         let ref = db.collection("events")
         ref.getDocuments { snapshot, error in
-            guard error == nil else{
+            guard error == nil else  {
                 print(error!.localizedDescription)
                 return
             }
@@ -88,37 +105,43 @@ class StationViewModel: ObservableObject{
                     
                     let id = data["id"] as? String ?? ""
                     let name = data["name"] as? String ?? ""
-                    let detail = data["name"] as? String ?? ""
+                    let station = data["station"] as? String ?? ""
+                    let location = data["location"] as? String ?? ""
+                    let description = data["description"] as? String ?? ""
+                    let category = data["category"] as? String ?? ""
+                    let startDate = (data["startDate"] as? Timestamp)?.dateValue() ?? Date()
+                    let endDate = (data["endDate"] as? Timestamp)?.dateValue() ?? Date()
+                    let imageName = data["imageName"] as? String ?? ""
                     
-                    let event = Event(id: id, name: name, category: "", imageUrl: "", location: "")
+                    let event = Event(id: id, name: name, station: station, description: description, category: category, startDate: startDate, endDate: endDate, location: location, imageName: imageName)
                     self.events.append(event)
+                    
                 }
             }
         }
     }
     
-    func addEvent(eventName: String){
+    func addEvent(eventName: String, eventStation: String, eventDescription: String, eventCategory: String, eventStartDate: Date, eventEndDate: Date, eventLocation: String, eventImageName: String){
         let db = Firestore.firestore()
-        var eventDetails = ["name": eventName]
-        eventDetails["detail"] = "detail 123"
+        var eventDetails = ["name": eventName, "station": eventStation, "description": eventDescription, "category": eventCategory, "startDate": eventStartDate, "endDate": eventEndDate, "location": eventLocation, "imageName" : eventImageName] as [String : Any]
         
-        let newEventRef = db.collection("Event").document()
-            
-            eventDetails["id"] = newEventRef.documentID
-            
-            newEventRef.setData(eventDetails) { error in
-                if let error = error {
-                    print("Error adding event: \(error.localizedDescription)")
-                } else {
-                    print("Event added successfully!")
-                }
+        let newEventRef = db.collection("events").document()
+        
+        eventDetails["id"] = newEventRef.documentID
+        
+        newEventRef.setData(eventDetails) { error in
+            if let error = error {
+                print("Error adding event: \(error.localizedDescription)")
+            } else {
+                print("Event added successfully!")
             }
+        }
         fetchEvent()
     }
     
     func deleteEvent(eventId: String) {
         let db = Firestore.firestore()
-        let eventRef = db.collection("Event").document(eventId)
+        let eventRef = db.collection("events").document(eventId)
         
         eventRef.delete { error in
             if let error = error {
@@ -130,15 +153,11 @@ class StationViewModel: ObservableObject{
         fetchEvent()
     }
     
-    func updateEvent(eventId: String) {
+    func updateEvent(eventId: String, eventName: String, eventStation: String, eventDescription: String, eventCategory: String, eventStartDate: Date, eventEndDate: Date, eventLocation: String, eventImageName: String) {
         let db = Firestore.firestore()
-        let eventRef = db.collection("Event").document(eventId)
-        
-        let newData = [
-            "id": eventId,
-            "name": "ini keupdate",
-            "detail": "detailnya keupdate"
-        ]
+        let eventRef = db.collection("events").document(eventId)
+    
+        let newData = ["name": eventName, "station": eventStation, "description": eventDescription, "category": eventCategory, "startDate": eventStartDate, "endDate": eventEndDate, "location": eventLocation, "imageName": eventImageName] as [String : Any]
         
         eventRef.updateData(newData) { error in
             if let error = error {
