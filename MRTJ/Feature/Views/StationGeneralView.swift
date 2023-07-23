@@ -15,7 +15,7 @@ struct StationGeneralView: View {
     @State var isPresented: Bool = false
     @State private var sheetContentHeight = CGFloat(0)
     
-    @State private var tappedIndex: Int = -1
+    @State private var tappedIndex: Int = 0
     let condensedBold = UIFont.systemFont(ofSize: 31, weight: .bold, width: .condensed)
     let condensedHeavy = UIFont.systemFont(ofSize: 24, weight: .heavy, width: .condensed)
     
