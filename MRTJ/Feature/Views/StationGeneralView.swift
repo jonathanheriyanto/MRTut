@@ -50,6 +50,10 @@ struct StationGeneralView: View {
                             .frame(width: 393, height: 193)
                             .position(x: geometry.size.width * 0.5, y:geometry.size.height / 7.5)
                             .background(Color.clear)
+                    }
+                    .position(x: geometry.size.width * 0.5, y: geometry.size.height / 2)
+                    
+                    VStack(alignment: .leading){
                         HStack {
                             Text(vm.station.name)
                                 .font(Font(condensedBold))
@@ -93,10 +97,6 @@ struct StationGeneralView: View {
                                 }
                             }
                         }
-                        .position(x: geometry.size.width * 0.35, y: geometry.size.height / 5.2)
-                        
-                        
-                        //Header Frame
                         ZStack{
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color(AssetName.green), lineWidth: 2)
@@ -140,8 +140,9 @@ struct StationGeneralView: View {
                             .padding(.horizontal, 24)
                             
                         }
-                        .position(x: geometry.size.width * 0.5,y: geometry.size.height / 3.5)
                     }
+                    .position(x: geometry.size.width * 0.5, y: geometry.size.height / 4.3)
+                    
                     
                     //Scrollable Station Line
                     ScrollView(.horizontal, showsIndicators: false){
@@ -224,9 +225,9 @@ struct StationGeneralView: View {
                         }
                         .frame(width: 1130)
                         .padding(.leading)
-
+                        
                     }
-                    .position(x: geometry.size.width * 0.55, y: geometry.size.height / 2.45)
+                    .position(x: geometry.size.width * 0.55, y: geometry.size.height / 2.55)
                     .padding(.trailing)
                     
                     //Picker
@@ -236,7 +237,7 @@ struct StationGeneralView: View {
                     }
                     .frame(width: 360)
                     .pickerStyle(SegmentedPickerStyle())
-                    .position(x: geometry.size.width * 0.5, y: geometry.size.height / 2)
+                    .position(x: geometry.size.width * 0.5, y: geometry.size.height / 2.08)
                     
                     //Direction header
                     
