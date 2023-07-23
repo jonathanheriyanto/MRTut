@@ -10,7 +10,6 @@ import Firebase
 
 class StationViewModel: ObservableObject{
     @Published var events: [Event] = []
-    @Published var event: Event = Event(id: "...", name: "...", station: "...", description: "...", category: "...", startDate: Date(), endDate: Date(), location: "...", imageName: "...")
     @Published var stations: [Station] = []
     @Published var station: Station = Station(id: "...", name: "...", live: "...", expectedDuration: "...", service: "...", cause: "...", situation: "...", events: [])
     @Published var sortedStations: [Station] = []
@@ -18,7 +17,7 @@ class StationViewModel: ObservableObject{
     init(){
         fetchEvent()
         fetchStations()
-        DispatchQueue.main.asyncAfter(deadline: .now()+1){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
             self.sortStation()
             self.station = self.sortedStations[0]
         }
@@ -188,14 +187,14 @@ class StationViewModel: ObservableObject{
     
     func getCurrentTimeDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm" // Format for time only
+        dateFormatter.dateFormat = "HH:mm"
         
         return dateFormatter.string(from: date)
     }
     
     func getCurrentDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy" // Format for date only
+        dateFormatter.dateFormat = "dd MMMM yyyy" 
         
         return dateFormatter.string(from: date)
     }

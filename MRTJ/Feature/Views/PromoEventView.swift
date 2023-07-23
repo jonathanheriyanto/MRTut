@@ -15,11 +15,10 @@ struct PromoEventView: View {
     var epLocation: String
     var epDate: String
     var epTime: String
-    @EnvironmentObject var vm: StationViewModel
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("\(vm.event.name)")
+            Text("\(epTitle)")
                 .font(.title)
                 .fontWeight(.heavy)
             Image("\(epImage)")
@@ -27,23 +26,23 @@ struct PromoEventView: View {
             VStack(alignment: .leading,spacing: 14){
                 HStack(spacing: 12){
                     Image(systemName: "location.circle.fill")
-                    Text("\(vm.event.location)")
+                    Text("\(epLocation)")
                         .font(.callout)
                 }
                 HStack(spacing: 12){
                     Image(systemName: "calendar.circle.fill")
-                    Text("\(vm.getCurrentDate(date: vm.event.startDate)) - \(vm.getCurrentDate(date: vm.event.endDate))")
+                    Text("\(epDate)")
                         .font(.callout)
                 }
                 HStack(spacing: 12){
                     Image(systemName: "clock.circle.fill")
-                    Text("\(vm.getCurrentTimeDate(date: vm.event.startDate)) - \(vm.getCurrentTimeDate(date: vm.event.endDate))")
+                    Text("\(epTime)")
                         .font(.callout)
                 }
             }
             .padding(.top)
             
-            Text("\(vm.event.description)")
+            Text("\(epDesc)")
                 .font(.callout)
                 .padding(.top)
             
@@ -68,6 +67,5 @@ struct PromoEventView_Previews: PreviewProvider {
             epDate: "29 - 31 Juli 2023",
             epTime: "13:00 - 00:00"
         )
-        .environmentObject(StationViewModel())
     }
 }
