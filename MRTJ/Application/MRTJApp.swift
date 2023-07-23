@@ -12,6 +12,8 @@ import UserNotifications
 class AppDelegate: NSObject, UIApplicationDelegate {
     let gcmMessageIDKey = "gcm.message_id"
     
+    @State var isPresented: Bool = false
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         
@@ -33,10 +35,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         
-        Messaging.messaging().subscribe(toTopic: "dukuhAtas") { error in
-          print("Subscribed to dukuh atas topic")
-        }
-        
         return true
     }
     
@@ -45,6 +43,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
+        }
+        
+        if let type = userInfo["type"] as? String {
+            // Handle the specific type of notification and navigate accordingly
+            if type == "emergency" {
+                isPresented = true
+                StationGeneralView(isPresented: $isPresented)
+            } else if type == "event" {
+                //segmented nya itu ke event
+            } else if type == "promo" {
+                //segmented nya itu ke event
+            }
         }
         
         print(userInfo)
