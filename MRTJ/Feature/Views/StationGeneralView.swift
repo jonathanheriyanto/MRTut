@@ -89,7 +89,7 @@ struct StationGeneralView: View {
                                                     }
                                             }
                                         }
-                                        .presentationDetents([.height(sheetContentHeight-20)])
+                                        .presentationDetents([.height(sheetContentHeight-10)])
                                 }
                             }
                         }
@@ -145,64 +145,88 @@ struct StationGeneralView: View {
                     
                     //Scrollable Station Line
                     ScrollView(.horizontal, showsIndicators: false){
-                        HStack(spacing: -11){
-                            ForEach(0..<vm.stations.count, id:\.self){ index in
-                                if index == 0 {
-                                    if tappedIndex == index {
-                                        Image(AssetName.stationLeftActive)
-                                            .zIndex(tappedIndex == index ? 1.0 : 0.0)
-                                            .onTapGesture {
-                                                tappedIndex = tappedIndex == index ? -1 : index
-                                                vm.station = vm.stations[index]
-                                            }
-                                    }else {
-                                        Image(AssetName.stationLeftInactive)
-                                            .zIndex(tappedIndex == index ? 1.0 : 0.0)
-                                            .onTapGesture {
-                                                tappedIndex = tappedIndex == index ? -1 : index
-                                                vm.station = vm.stations[index]
-                                            }
-                                    }
-                                }else if index == vm.stations.count - 1 {
-                                    if tappedIndex == index {
-                                        Image(AssetName.stationRightActive)
-                                            .padding(.trailing, 25)
-                                            .zIndex(tappedIndex == index ? 1.0 : 0.0)
-                                            .onTapGesture {
-                                                tappedIndex = tappedIndex == index ? -1 : index
-                                                vm.station = vm.stations[index]
-                                            }
+                        VStack {
+                            HStack(spacing: -11){
+                                ForEach(0..<vm.stations.count, id:\.self){ index in
+                                    if index == 0 {
+                                        if tappedIndex == index {
+                                            Image(AssetName.stationLeftActive)
+                                                .zIndex(tappedIndex == index ? 1.0 : 0.0)
+                                                .onTapGesture {
+                                                    tappedIndex = tappedIndex == index ? -1 : index
+                                                    vm.station = vm.stations[index]
+                                                }
+                                        }else {
+                                            Image(AssetName.stationLeftInactive)
+                                                .zIndex(tappedIndex == index ? 1.0 : 0.0)
+                                                .onTapGesture {
+                                                    tappedIndex = tappedIndex == index ? -1 : index
+                                                    vm.station = vm.stations[index]
+                                                }
+                                        }
+                                    }else if index == vm.stations.count - 1 {
+                                        if tappedIndex == index {
+                                            Image(AssetName.stationRightActive)
+                                                .padding(.trailing, 25)
+                                                .zIndex(tappedIndex == index ? 1.0 : 0.0)
+                                                .onTapGesture {
+                                                    tappedIndex = tappedIndex == index ? -1 : index
+                                                    vm.station = vm.stations[index]
+                                                }
+                                        }else{
+                                            Image(AssetName.stationRightInactive)
+                                                .padding(.trailing, 25)
+                                                .zIndex(tappedIndex == index ? 1.0 : 0.0)
+                                                .onTapGesture {
+                                                    tappedIndex = tappedIndex == index ? -1 : index
+                                                    vm.station = vm.stations[index]
+                                                }
+                                        }
+                                        
                                     }else{
-                                        Image(AssetName.stationRightInactive)
-                                            .padding(.trailing, 25)
-                                            .zIndex(tappedIndex == index ? 1.0 : 0.0)
-                                            .onTapGesture {
-                                                tappedIndex = tappedIndex == index ? -1 : index
-                                                vm.station = vm.stations[index]
-                                            }
-                                    }
-                                    
-                                }else{
-                                    if index == tappedIndex{
-                                        Image(AssetName.stationMiddleActive)
-                                            .zIndex(1.0)
-                                            .onTapGesture {
-                                                tappedIndex = tappedIndex == index ? -1 : index
-                                                vm.station = vm.stations[index]
-                                            }
-                                    }else{
-                                        Image(AssetName.stationMiddleInactive)
-                                            .zIndex(0.0)
-                                            .onTapGesture {
-                                                tappedIndex = tappedIndex == index ? -1 : index
-                                                vm.station = vm.stations[index]
-                                            }
+                                        if index == tappedIndex{
+                                            Image(AssetName.stationMiddleActive)
+                                                .zIndex(1.0)
+                                                .onTapGesture {
+                                                    tappedIndex = tappedIndex == index ? -1 : index
+                                                    vm.station = vm.stations[index]
+                                                }
+                                        }else{
+                                            Image(AssetName.stationMiddleInactive)
+                                                .zIndex(0.0)
+                                                .onTapGesture {
+                                                    tappedIndex = tappedIndex == index ? -1 : index
+                                                    vm.station = vm.stations[index]
+                                                }
+                                        }
                                     }
                                 }
                             }
+                            
+                            HStack(spacing: 11.3){
+                                ForEach(0..<vm.stations.count, id:\.self){ index in
+                                    if(index<3){
+                                        Text("\(vm.stations[index].name)")
+                                            .font(.footnote)
+                                            .fontWeight(.bold)
+                                            .multilineTextAlignment(.center)
+                                            .frame(width: 75)
+                                    } else if (index>=3){
+                                        Text("\(vm.stations[index].name)")
+                                            .font(.footnote)
+                                            .fontWeight(.bold)
+                                            .multilineTextAlignment(.center)
+                                            .frame(width: 74)
+                                    }
+                                }
+                            }
+                            .padding(.leading, -21)
                         }
+                        .frame(width: 1130)
+                        .padding(.leading)
+
                     }
-                    .position(x: geometry.size.width * 0.55, y: geometry.size.height / 2.55)
+                    .position(x: geometry.size.width * 0.55, y: geometry.size.height / 2.45)
                     .padding(.trailing)
                     
                     //Picker
@@ -212,7 +236,7 @@ struct StationGeneralView: View {
                     }
                     .frame(width: 360)
                     .pickerStyle(SegmentedPickerStyle())
-                    .position(x: geometry.size.width * 0.5, y: geometry.size.height / 2.1)
+                    .position(x: geometry.size.width * 0.5, y: geometry.size.height / 2)
                     
                     //Direction header
                     
