@@ -1,14 +1,14 @@
 //
-//  stationInformationView.swift
-//  StationInformation
+//  StationGeneralView.swift
+//  MRTJ
 //
-//  Created by Clarabella Lius on 19/07/23.
+//  Created by Jonathan Heriyanto on 23/07/23.
 //
 
 import SwiftUI
 import Lottie
 
-struct StationInformationView: View {
+struct StationGeneralView: View {
     
     @State var selectedOption = "Schedule"
     @EnvironmentObject var vm: StationViewModel
@@ -286,11 +286,9 @@ struct StationInformationView: View {
     }
 }
 
-struct stationInformationView_Previews: PreviewProvider {
+struct stationGeneralView_Previews: PreviewProvider {
     static var previews: some View {
-        StationInformationView()
+        StationGeneralView()
             .environmentObject(StationViewModel())
     }
 }
-
-
