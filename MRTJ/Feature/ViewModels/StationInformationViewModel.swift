@@ -17,9 +17,9 @@ class StationViewModel: ObservableObject{
     init(){
         fetchEvent()
         fetchStations()
-//        DispatchQueue.main.asyncAfter(deadline: .now()+2){
-//            self.sortStation()
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now()+1){
+            self.sortStation()
+        }
     }
     //stations
     func fetchStations(){
