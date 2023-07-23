@@ -1,14 +1,14 @@
 //
-//  stationInformationView.swift
-//  StationInformation
+//  StationGeneralView.swift
+//  MRTJ
 //
-//  Created by Clarabella Lius on 19/07/23.
+//  Created by Jonathan Heriyanto on 23/07/23.
 //
 
 import SwiftUI
 import Lottie
 
-struct StationInformationView: View {
+struct StationGeneralView: View {
     
     @State var selectedOption = "Schedule"
     @EnvironmentObject var vm: StationViewModel
@@ -25,7 +25,7 @@ struct StationInformationView: View {
                 ZStack{
                     //Background Image
                     ZStack{
-                        Image(AssetName.stationLebakBulus)
+                        Image("\(vm.station.id)")
                             .resizable()
                             .scaledToFill()
                             .ignoresSafeArea()
@@ -53,34 +53,33 @@ struct StationInformationView: View {
                                     .fontWeight(.bold)
                             }
                             //ini nanti kayaknya harus ditambahin kondisi stasiun di database nya jadi sheet nya bisa beda dimunculin sesuai kondisi stasiunnya
-                            /*
-                             .sheet(isPresented: $isPresented) {
-                                problemDetailSheet(station: "\(vm.station.name)", cause: "penyebab", duration: "durasi")
-                                    .background {
-                                        GeometryReader { proxy in
-                                            Color.clear
-                                                .task {
-                                                    print("size = \(proxy.size.height)")
-                                                    sheetContentHeight = proxy.size.height
-                                                }
-                                        }
-                                    }
-                                    .presentationDetents([.height(sheetContentHeight+50)])
-                                
-                            }
-                            */
                             .sheet(isPresented: $isPresented) {
-                                stationDetailSheet(station: "\(vm.station.name)")
-                                    .background {
-                                        GeometryReader { proxy in
-                                            Color.clear
-                                                .task {
-                                                    print("size = \(proxy.size.height)")
-                                                    sheetContentHeight = proxy.size.height
-                                                }
+                                if(vm.station.service == "Closed"){
+                                    problemDetailSheet(station: "\(vm.station.name)", cause: "\(vm.station.cause)", duration: "\(vm.station.expectedDuration)")
+                                        .background {
+                                            GeometryReader { proxy in
+                                                Color.clear
+                                                    .task {
+                                                        print("size = \(proxy.size.height)")
+                                                        sheetContentHeight = proxy.size.height
+                                                    }
+                                            }
                                         }
-                                    }
-                                    .presentationDetents([.height(sheetContentHeight-20)])
+                                        .presentationDetents([.height(sheetContentHeight+120)])
+                                }
+                                else{
+                                    stationDetailSheet(station: "\(vm.station.name)")
+                                        .background {
+                                            GeometryReader { proxy in
+                                                Color.clear
+                                                    .task {
+                                                        print("size = \(proxy.size.height)")
+                                                        sheetContentHeight = proxy.size.height
+                                                    }
+                                            }
+                                        }
+                                        .presentationDetents([.height(sheetContentHeight-20)])
+                                }
                             }
                         }
                         .position(x: geometry.size.width * 0.35, y: geometry.size.height / 5.2)
@@ -124,7 +123,6 @@ struct StationInformationView: View {
                                     }
                                     
                                 }.font(.system(size:13))
-                                
                             }
                             .padding(.top, 8)
                             .padding(.bottom, 8)
@@ -154,7 +152,6 @@ struct StationInformationView: View {
                                                 vm.station = vm.stations[index]
                                             }
                                     }
-                                    
                                 }else if index == vm.stations.count - 1 {
                                     if tappedIndex == index {
                                         Image(AssetName.stationRightActive)
@@ -289,11 +286,9 @@ struct StationInformationView: View {
     }
 }
 
-struct stationInformationView_Previews: PreviewProvider {
+struct stationGeneralView_Previews: PreviewProvider {
     static var previews: some View {
-        StationInformationView()
+        StationGeneralView()
             .environmentObject(StationViewModel())
     }
 }
-
-
