@@ -9,8 +9,19 @@ import Foundation
 
 struct AssetName{
     //MARK: Station Names
-    static let stationLebakBulus = "LebakBulusGrab"
-    static let stationIstora = "Istora"
+    static let LebakBulus = "LebakBulus"
+    static let HajiNawi = "HajiNawi"
+    static let ASEAN = "ASEAN"
+    static let BendunganHilir = "BendunganHilir"
+    static let BundaranHI = "BundaranHI"
+    static let Fatmawati = "Fatmawati"
+    static let BlokA = "BlokA"
+    static let Senayan = "Senayan"
+    static let Setiabudi = "Setiabudi"
+    static let Cipete = "Cipete"
+    static let BlokM = "BlokM"
+    static let Istora = "Istora"
+    static let DukuhAtas = "DukuhAtas"
     
     //MARK: Scrollable Line
     static let lebakBulusLine = "lebakBulusLine"
