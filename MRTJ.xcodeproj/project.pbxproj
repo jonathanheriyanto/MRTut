@@ -59,6 +59,7 @@
 		E1704EAE2A6D78BA00434FAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EAD2A6D78BA00434FAB /* LocationManager.swift */; };
 		E1704EB12A6D78F100434FAB /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EB02A6D78F100434FAB /* NotificationHandler.swift */; };
 		E1704EB32A6D793400434FAB /* ExtStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EB22A6D793400434FAB /* ExtStations.swift */; };
+		E1704EB52A6DA45D00434FAB /* NotificationSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EB42A6DA45D00434FAB /* NotificationSheetView.swift */; };
 		F683BCA12A6A2C6800CC71A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F683BC9E2A6A2C6800CC71A0 /* Assets.xcassets */; };
 		F683BCA22A6A2C6800CC71A0 /* pulse-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = F683BC9F2A6A2C6800CC71A0 /* pulse-animation.json */; };
 		F683BCA32A6A2C6800CC71A0 /* AssetName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F683BCA02A6A2C6800CC71A0 /* AssetName.swift */; };
@@ -96,6 +97,7 @@
 		E1704EAD2A6D78BA00434FAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E1704EB02A6D78F100434FAB /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		E1704EB22A6D793400434FAB /* ExtStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtStations.swift; sourceTree = "<group>"; };
+		E1704EB42A6DA45D00434FAB /* NotificationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSheetView.swift; sourceTree = "<group>"; };
 		F683BC9E2A6A2C6800CC71A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F683BC9F2A6A2C6800CC71A0 /* pulse-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pulse-animation.json"; sourceTree = "<group>"; };
 		F683BCA02A6A2C6800CC71A0 /* AssetName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetName.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				B11DAAE42A6C057F005332C8 /* ScheduleListView.swift */,
 				38B540262A6D72E50019AACF /* StationGeneralView.swift */,
 				B125D0F42A6D80FA003FD4CB /* EventListUserView.swift */,
+				E1704EB42A6DA45D00434FAB /* NotificationSheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				53DD092F2A6C25F100DB84BD /* StationDetailView.swift in Sources */,
 				53DD09272A6C236800DB84BD /* AdminView.swift in Sources */,
 				380FC1E72A67B927004F16CB /* Persistence.swift in Sources */,
+				E1704EB52A6DA45D00434FAB /* NotificationSheetView.swift in Sources */,
 				E1704EAE2A6D78BA00434FAB /* LocationManager.swift in Sources */,
 				53DD09312A6C263D00DB84BD /* EditStationView.swift in Sources */,
 				38B540272A6D72E50019AACF /* StationGeneralView.swift in Sources */,

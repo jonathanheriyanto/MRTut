@@ -15,7 +15,7 @@ struct ContentView: View {
 //            EventListView(isAdmin: true)
                 .environmentObject(dataManager)
         } else if guestIsLoggedIn {
-            StationGeneralView(isPresented: .constant(false))
+            StationGeneralView()
                 .environmentObject(dataManager)
         } else {
             content
