@@ -42,7 +42,7 @@ struct problemDetailSheet: View {
                 Text("Duration")
                     .font(.title)
                     .fontWeight(.semibold)
-                Text("\(duration)")
+                Text("Expected to reopen at \(duration)")
                     .font(.callout)
                     .multilineTextAlignment(.leading)
             }
