@@ -18,6 +18,9 @@ struct AssetName{
     //MARK: Colors
     static let green = "green"
     static let navy = "navy"
+    static let lightBlue = "lightBlue"
+    static let darkGreen = "darkGreen"
+    static let darkOrange = "darkOrange"
     
     //MARK: Live Info
     static let liveAnimation = "pulse-animation"
@@ -39,6 +42,8 @@ struct AssetName{
     //MARK: Events
     static let rotio = "rotio"
     
+    static let male = "mrt-male"
+    static let female = "mrt-female"
 }
 
 
