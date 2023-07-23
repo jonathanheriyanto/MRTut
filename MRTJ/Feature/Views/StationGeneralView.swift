@@ -12,7 +12,7 @@ struct StationGeneralView: View {
     
     @State var selectedOption = "Schedule"
     @EnvironmentObject var vm: StationViewModel
-    @Binding var isPresented: Bool
+    @State var isPresented: Bool = false
     @State private var sheetContentHeight = CGFloat(0)
     
     @State private var tappedIndex: Int = 0
@@ -35,6 +35,7 @@ struct StationGeneralView: View {
             }
         )
     }
+    @State private var showSheet = false
     
     var body: some View {
         GeometryReader{ geometry in
@@ -239,13 +240,30 @@ struct StationGeneralView: View {
                             //EVENT
                         }else if selectedOption == "Event"{
                             EventListUserView()
-                            .position(x: geometry.size.width * 0.5, y: geometry.size.height / 1.35)
+                                .position(x: geometry.size.width * 0.5, y: geometry.size.height / 1.35)
                         }
                     }
                     .zIndex(-1)
                 }
                 .onChange(of: nearestStation) { newNearestStation in
                     nearestStationBinding.wrappedValue = newNearestStation
+                }
+                .onReceive(locationManager.$userLocation) { locations in
+                    guard let userLocation = locations else {return }
+                    
+                    if let nearestRegionData = locationManager.calculateNearestRegion(userLocation: userLocation, regions: Stations.stations) {
+                        let nearestRegion = nearestRegionData.region
+                        let distance = nearestRegionData.distance
+                        
+                        if distance > 1000 {
+                            nearestDistance = String(format: "%.2f km", Float(distance)/1000)
+                        } else {
+                            nearestDistance = String(format: "%.2f meters", Float(distance))
+                        }
+                        nearestStation = nearestRegion.identifier
+                        print("Nearest region: \(nearestRegion.identifier)")
+                        print("Distance: \(distance) meters")
+                    }
                 }
             }
         }
@@ -266,29 +284,21 @@ struct StationGeneralView: View {
             
             notificationHandler.requestUserNotification()
         }
-        .onReceive(locationManager.$userLocation) { locations in
-            guard let userLocation = locations else {return }
-            
-            if let nearestRegionData = locationManager.calculateNearestRegion(userLocation: userLocation, regions: Stations.stations) {
-                let nearestRegion = nearestRegionData.region
-                let distance = nearestRegionData.distance
-                
-                if distance > 1000 {
-                    nearestDistance = String(format: "%.2f km", Float(distance)/1000)
-                } else {
-                    nearestDistance = String(format: "%.2f meters", Float(distance))
-                }
-                nearestStation = nearestRegion.identifier
-                print("Nearest region: \(nearestRegion.identifier)")
-                print("Distance: \(distance) meters")
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("ShowSheetNotification"))) { notification in
+            if let showSheet = notification.object as? Bool {
+                self.showSheet = showSheet
             }
+        }
+        .sheet(isPresented: $showSheet) {
+            NotificationSheetView(isPresented: $showSheet)
+                .environmentObject(vm)
         }
     }
 }
 
 struct stationGeneralView_Previews: PreviewProvider {
     static var previews: some View {
-        StationGeneralView(isPresented: .constant(false))
+        StationGeneralView()
             .environmentObject(StationViewModel())
     }
 }

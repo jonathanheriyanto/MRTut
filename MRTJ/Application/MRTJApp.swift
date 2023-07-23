@@ -12,8 +12,6 @@ import UserNotifications
 class AppDelegate: NSObject, UIApplicationDelegate {
     let gcmMessageIDKey = "gcm.message_id"
     
-    @State var isPresented: Bool = false
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         
@@ -46,14 +44,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
         
         if let type = userInfo["type"] as? String {
-            // Handle the specific type of notification and navigate accordingly
             if type == "emergency" {
-                isPresented = true
-                StationGeneralView(isPresented: $isPresented)
+                let showSheet = Bool(type)
+                NotificationCenter.default.post(name: Notification.Name("ShowSheetNotification"), object: showSheet)
             } else if type == "event" {
-                //segmented nya itu ke event
             } else if type == "promo" {
-                //segmented nya itu ke event
             }
         }
         
@@ -127,7 +122,7 @@ struct MRTJApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     let persistenceController = PersistenceController.shared
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
