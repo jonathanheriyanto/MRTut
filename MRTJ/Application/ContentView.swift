@@ -6,13 +6,13 @@ struct ContentView: View {
     
     @State private var email = ""
     @State private var password = ""
-    @State private var userIsLoggedIn = false
+    @State private var userIsLoggedIn = true
     @State private var guestIsLoggedIn = false
     
     var body: some View {
         if userIsLoggedIn {
             AdminView()
-//            EventListView()
+//            EventListView(isAdmin: true)
                 .environmentObject(dataManager)
         } else if guestIsLoggedIn {
             StationInformationView()

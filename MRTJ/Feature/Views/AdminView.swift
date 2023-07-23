@@ -15,9 +15,3 @@ struct AdminView: View {
             .environmentObject(dataManager)
     }
 }
-
-struct AdminView_Previews: PreviewProvider {
-    static var previews: some View {
-        AdminView()
-    }
-}

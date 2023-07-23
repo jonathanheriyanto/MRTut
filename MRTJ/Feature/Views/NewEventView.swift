@@ -3,7 +3,7 @@
 //  FirebaseTesting
 //
 //  Created by Leo Harnadi on 19/07/23.
-//
+// View tambah event baru
 
 import SwiftUI
 
@@ -28,41 +28,91 @@ struct NewEventView: View {
     
     var body: some View {
         VStack {
-            Spacer()
+//            Spacer()
+            
+            Text("Add New Event/Promo")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(Color(AssetName.navy))
             
             Group {
-                TextField("Name", text: $name)
-                TextField("Description", text: $description)
-                Picker("Category", selection: $selectedCategory) {
-                    ForEach(0..<categoryList.count, id: \.self) { index in
-                        Text(categoryList[index]).tag(index)
-                    }
-                }
-                .pickerStyle(MenuPickerStyle())
-                .onAppear {
-                    selectedCategory = categoryList.firstIndex(of: category) ?? 0
-                }
-                .onChange(of: selectedCategory) { newValue in
-                    category = categoryList[newValue]
-                }
+                HStack{
+                    Text("Name")
+                        .padding(.trailing, 5)
+                    TextField("Name", text: $name)
+                        .offset(x:50)
+                }.padding(.bottom, 8)
+                    
+                HStack{
+                    Text("Description")
+                        .padding(.trailing, 5)
+                    TextField("Description", text: $description)
+                        .offset(x:8)
+                    
+                }.padding(.bottom, 8)
                 
-                Picker("Station", selection: $selectedStation) {
-                    ForEach(0..<stationList.count, id: \.self) { index in
-                        Text(stationList[index]).tag(index)
+                HStack{
+                    Text("Category")
+                    Spacer()
+                    Picker("Category", selection: $selectedCategory) {
+                        ForEach(0..<categoryList.count, id: \.self) { index in
+                            Text(categoryList[index]).tag(index)
+                        }
                     }
+                    .pickerStyle(MenuPickerStyle())
+                    .onAppear {
+                        selectedCategory = categoryList.firstIndex(of: category) ?? 0
+                    }
+                    .onChange(of: selectedCategory) { newValue in
+                        category = categoryList[newValue]
+                    }
+                    .offset(x:-158)
+                    .foregroundColor(.gray)
                 }
-                .pickerStyle(MenuPickerStyle())
-                .onAppear {
-                    selectedStation = stationList.firstIndex(of: station) ?? 0
+                .padding(.bottom, 8)
+                
+                HStack{
+                    Text("Station")
+                    Spacer()
+                    Picker("Station", selection: $selectedStation) {
+                        ForEach(0..<stationList.count, id: \.self) { index in
+                            Text(stationList[index]).tag(index)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .onAppear {
+                        selectedStation = stationList.firstIndex(of: station) ?? 0
+                    }
+                    .onChange(of: selectedStation) { newValue in
+                        station = stationList[newValue]
+                    }
+                    .offset(x: -147)
+                    .foregroundColor(.gray)
                 }
-                .onChange(of: selectedStation) { newValue in
-                    station = stationList[newValue]
-                }
+                .padding(.bottom, 8)
+                
                 DatePicker("Start Date", selection: $startDate)
+                    .padding(.bottom, 8)
+                
                 DatePicker("End Date", selection: $endDate)
-                TextField("Location", text: $location)
-                TextField("Image Name", text: $imageName)
-                    .textInputAutocapitalization(.never)
+                    .padding(.bottom, 8)
+                
+                HStack{
+                    Text("Location")
+                        .padding(.trailing, 5)
+                    TextField("Location", text: $location)
+                        .offset(x:32)
+                }
+                .padding(.bottom, 8)
+                
+                HStack{
+                    Text("Image")
+                        .padding(.trailing, 5)
+                    TextField("Image Name", text: $imageName)
+                        .textInputAutocapitalization(.never)
+                        .offset(x:50)
+                }
+               
                 
             }
             
@@ -73,6 +123,13 @@ struct NewEventView: View {
                 showPopUp = false
             } label: {
                 Text("Save")
+                    .frame(width: 150, height: 30)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .background(Color(AssetName.green))
+                    .cornerRadius(8)
+                    
             }
 
         }

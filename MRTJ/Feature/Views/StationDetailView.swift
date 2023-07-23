@@ -3,7 +3,7 @@
 //  FirebaseTesting
 //
 //  Created by Leo Harnadi on 21/07/23.
-//
+// Kalo click extremely busy
 
 import SwiftUI
 

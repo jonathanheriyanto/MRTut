@@ -28,34 +28,80 @@ struct EditStationView: View {
     
     var body: some View {
         VStack {
-            Picker("Service", selection: $selectedService) {
-                ForEach(0..<serviceList.count, id: \.self) { index in
-                    Text(serviceList[index]).tag(index)
-                }
-            }
-            .pickerStyle(MenuPickerStyle())
-            .onAppear {
-                selectedService = serviceList.firstIndex(of: service) ?? 0
-            }
-            .onChange(of: selectedService) { newValue in
-                service = serviceList[newValue]
-            }
             
-            Picker("Live Status", selection: $selectedLive) {
-                ForEach(0..<liveList.count, id: \.self) { index in
-                    Text(liveList[index]).tag(index)
+            Text("Edit Station Status")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(Color(AssetName.navy))
+                .padding()
+            
+            HStack{
+                Text("Service Status")
+                    .padding(.trailing, 1)
+                Picker("Service", selection: $selectedService) {
+                    ForEach(0..<serviceList.count, id: \.self) { index in
+                        Text(serviceList[index]).tag(index)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
+                .onAppear {
+                    selectedService = serviceList.firstIndex(of: service) ?? 0
+                }
+                .onChange(of: selectedService) { newValue in
+                    service = serviceList[newValue]
                 }
             }
-            .pickerStyle(MenuPickerStyle())
-            .onAppear {
-                selectedLive = liveList.firstIndex(of: live) ?? 0
+            .offset(x: -72)
+            .padding(.bottom, 8)
+            
+            HStack{
+                Text("Crowd Status")
+                    .padding(.trailing, 10)
+                
+                Picker("Live Status", selection: $selectedLive) {
+                    ForEach(0..<liveList.count, id: \.self) { index in
+                        Text(liveList[index]).tag(index)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
+                .onAppear {
+                    selectedLive = liveList.firstIndex(of: live) ?? 0
+                }
+                .onChange(of: selectedLive) { newValue in
+                    live = liveList[newValue]
+                }
             }
-            .onChange(of: selectedLive) { newValue in
-                live = liveList[newValue]
+            .offset(x: -43)
+            .padding(.bottom, 8)
+            
+            HStack{
+                Text("Situation")
+                    .padding(.trailing, 15)
+                
+                TextField("Situation", text: $situation)
+                    .padding(.leading, 5)
+                    .foregroundColor(.gray)
             }
-            TextField("Situation", text: $situation)
-            TextField("Expected Duration", text: $expectedDuration)
-            TextField("Cause", text: $cause)
+            .padding(.leading, 12)
+            .padding(.bottom, 8)
+            
+            HStack{
+                Text("Expected Duration")
+                    .padding(.trailing, 10)
+                
+                TextField("Expected Duration", text: $expectedDuration)
+                    .foregroundColor(.gray)
+            }
+            .padding(.leading, 12)
+            .padding(.bottom, 8)
+            
+            HStack{
+                Text("Cause")
+                    .padding(.trailing, 10)
+                
+                TextField("Cause", text: $cause)
+                    .foregroundColor(.gray)
+            }.padding(.leading, 12)
             
             Spacer()
             Button {
@@ -63,6 +109,12 @@ struct EditStationView: View {
                 editingStation = false
             } label: {
                 Text("Save")
+                    .frame(width: 150, height: 30)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .background(Color(AssetName.green))
+                    .cornerRadius(8)
             }
         }
         .onAppear {
