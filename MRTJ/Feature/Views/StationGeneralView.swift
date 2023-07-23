@@ -12,7 +12,7 @@ struct StationGeneralView: View {
     
     @State var selectedOption = "Schedule"
     @EnvironmentObject var vm: StationViewModel
-    @State var isPresented: Bool = false
+    @Binding var isPresented: Bool
     @State private var sheetContentHeight = CGFloat(0)
     
     @State private var tappedIndex: Int = 0
@@ -23,6 +23,18 @@ struct StationGeneralView: View {
     @StateObject private var notificationHandler = NotificationHandler()
     @State private var nearestStation: String = ""
     @State private var nearestDistance: String = ""
+    private var nearestStationBinding: Binding<String> {
+        Binding<String>(
+            get: { nearestStation },
+            set: { newValue in
+                nearestStation = newValue
+                if let nearestStationIndex = vm.stations.firstIndex(where: { $0.name == nearestStation }) {
+                    tappedIndex = nearestStationIndex
+                    vm.station = vm.stations[tappedIndex]
+                }
+            }
+        )
+    }
     
     var body: some View {
         GeometryReader{ geometry in
@@ -232,6 +244,9 @@ struct StationGeneralView: View {
                     }
                     .zIndex(-1)
                 }
+                .onChange(of: nearestStation) { newNearestStation in
+                    nearestStationBinding.wrappedValue = newNearestStation
+                }
             }
         }
         .onAppear{
@@ -263,13 +278,7 @@ struct StationGeneralView: View {
                 } else {
                     nearestDistance = String(format: "%.2f meters", Float(distance))
                 }
-                
                 nearestStation = nearestRegion.identifier
-                if let nearestStationIndex = vm.stations.firstIndex(where: {$0.name == nearestStation }) {
-                    tappedIndex = nearestStationIndex
-                    vm.station = vm.stations[tappedIndex]
-                }
-                
                 print("Nearest region: \(nearestRegion.identifier)")
                 print("Distance: \(distance) meters")
             }
@@ -279,7 +288,7 @@ struct StationGeneralView: View {
 
 struct stationGeneralView_Previews: PreviewProvider {
     static var previews: some View {
-        StationGeneralView()
+        StationGeneralView(isPresented: .constant(false))
             .environmentObject(StationViewModel())
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import UserNotifications
 import CoreLocation
+import Firebase
 import SwiftUI
 
 class NotificationHandler: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
@@ -18,7 +19,7 @@ class NotificationHandler: NSObject, ObservableObject, UNUserNotificationCenterD
     
     var identifierRegion = "Region-Based Notification"
     
-//    @State var isPresented: Bool = true
+    //    @State var isPresented: Bool = true
     
     func requestUserNotification() {
         notificationCenter.delegate = self
@@ -100,30 +101,69 @@ class NotificationHandler: NSObject, ObservableObject, UNUserNotificationCenterD
         switch region.identifier {
         case .lebakBulus:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "lebakBulus") { error in
+                print("Subscribed to lebak bulus topic")
+            }
         case .fatmawati:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "fatmawatiIndomaret") { error in
+                print("Subscribed to fatmawati Indomaret topic")
+            }
         case .cipeteRaya:
             notificationforRegions(region: region)
-        case .cipeteRaya:
+            Messaging.messaging().subscribe(toTopic: "lebakBulus") { error in
+                print("Subscribed to lebak bulus topic")
+            }
+        case .hajiNawi:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "hajiNawi") { error in
+                print("Subscribed to haji nawi topic")
+            }
         case .blokA:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "blokA") { error in
+                print("Subscribed to blok a topic")
+            }
         case .blokM:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "blokM") { error in
+                print("Subscribed to blok m topic")
+            }
         case .asean:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "asean") { error in
+                print("Subscribed to asean topic")
+            }
         case .senayan:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "senayan") { error in
+                print("Subscribed to senayan topic")
+            }
         case .istora:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "istore") { error in
+                print("Subscribed to istora mandiri topic")
+            }
         case .benHil:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "bendunganHilir") { error in
+                print("Subscribed to bendungan hilir topic")
+            }
         case .setiabudi:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "setiabudi") { error in
+                print("Subscribed to setiabudi astra topic")
+            }
         case .dukuhAtas:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "dukuhAtas") { error in
+                print("Subscribed to dukuh atas bni topic")
+            }
         case .bundaranHI:
             notificationforRegions(region: region)
+            Messaging.messaging().subscribe(toTopic: "bundaranHI") { error in
+                print("Subscribed to bundaran HI topic")
+            }
         default:
             break
         }
@@ -137,22 +177,6 @@ class NotificationHandler: NSObject, ObservableObject, UNUserNotificationCenterD
         let identifier = response.notification.request.identifier
         
         print(identifier)
-        
-        if let userInfo = response.notification.request.content.userInfo as? [String: Any],
-           let notificationType = userInfo["type"] as? String {
-            
-            switch notificationType {
-            case "enterEvent":
-                break
-            case "exitEvent":
-                break
-            case "regionBasedEvent":
-                break
-            default:
-                break
-            }
-        }
-        completionHandler()
     }
 }
 
