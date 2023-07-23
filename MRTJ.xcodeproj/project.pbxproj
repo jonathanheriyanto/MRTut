@@ -55,6 +55,7 @@
 		B11DAAE32A6A3FD0005332C8 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B11DAAE22A6A3FD0005332C8 /* FirebaseStorageCombine-Community */; };
 		B11DAAE52A6C057F005332C8 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DAAE42A6C057F005332C8 /* ScheduleListView.swift */; };
 		B125D0F32A6D748B003FD4CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B125D0F22A6D748B003FD4CB /* GoogleService-Info.plist */; };
+		B125D0F52A6D80FA003FD4CB /* EventListUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125D0F42A6D80FA003FD4CB /* EventListUserView.swift */; };
 		E1704EAE2A6D78BA00434FAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EAD2A6D78BA00434FAB /* LocationManager.swift */; };
 		E1704EB12A6D78F100434FAB /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EB02A6D78F100434FAB /* NotificationHandler.swift */; };
 		E1704EB32A6D793400434FAB /* ExtStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EB22A6D793400434FAB /* ExtStations.swift */; };
@@ -91,6 +92,7 @@
 		B11DAAB52A6A356D005332C8 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		B11DAAE42A6C057F005332C8 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		B125D0F22A6D748B003FD4CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B125D0F42A6D80FA003FD4CB /* EventListUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListUserView.swift; sourceTree = "<group>"; };
 		E1704EAD2A6D78BA00434FAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E1704EB02A6D78F100434FAB /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		E1704EB22A6D793400434FAB /* ExtStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtStations.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				38B5401E2A6C2B8E0019AACF /* problemDetailSheet.swift */,
 				B11DAAE42A6C057F005332C8 /* ScheduleListView.swift */,
 				38B540262A6D72E50019AACF /* StationGeneralView.swift */,
+				B125D0F42A6D80FA003FD4CB /* EventListUserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 			files = (
 				E1704EB32A6D793400434FAB /* ExtStations.swift in Sources */,
 				38B5401F2A6C2B8E0019AACF /* problemDetailSheet.swift in Sources */,
+				B125D0F52A6D80FA003FD4CB /* EventListUserView.swift in Sources */,
 				E1704EB12A6D78F100434FAB /* NotificationHandler.swift in Sources */,
 				38537C4F2A6C241800F498BB /* iconDescView.swift in Sources */,
 				F683BCAB2A6A2C7400CC71A0 /* StationInformationViewModel.swift in Sources */,

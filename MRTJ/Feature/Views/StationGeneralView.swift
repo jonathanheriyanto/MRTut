@@ -37,9 +37,6 @@ struct StationGeneralView: View {
                             .frame(width: 393, height: 193)
                             .position(x: geometry.size.width * 0.5, y:geometry.size.height / 7.5)
                             .background(Color.clear)
-                        
-                        
-                        
                         HStack {
                             Text(vm.station.name)
                                 .font(Font(condensedBold))
@@ -229,54 +226,8 @@ struct StationGeneralView: View {
                                 .position(x: geometry.size.width * 0.74, y: geometry.size.height / 1.16)
                             //EVENT
                         }else if selectedOption == "Event"{
-                            VStack{
-                                ZStack(alignment: .leading){
-                                    //Event
-                                    HStack(alignment: .center, spacing: 12) {
-                                        Image(AssetName.rotio)
-                                            .padding(0)
-                                            .frame(width: 40, height: 40, alignment: .leading)
-                                            .cornerRadius(4)
-                                        
-                                        VStack(alignment: .leading){
-                                            Text("Roti'O Buy 4 Get 5")
-                                                .font(.system(size:20))
-                                                .fontWeight(.medium)
-                                            
-                                            Text("Promotion")
-                                                .font(.system(size:13))
-                                                .fontWeight(.light)
-                                        }.padding(.trailing, 50)
-                                        
-                                        NavigationLink {
-                                            PromoEventView(type: "promo",
-                                                           epTitle: "ROTI’O BUY 4 GET 5",
-                                                           epDesc: "Promo hanya berlaku untuk pembelian di tempat. *S&K berlaku",
-                                                           epImage: "brotio",
-                                                           epLocation: "Stasiun MRT Lebak Bulus",
-                                                           epDate: "20 - 31 Juli 2023",
-                                                           epTime: "06:00 - 21:00")
-                                        } label: {
-                                            Text("See More")
-                                                .font(.system(size:13))
-                                                .fontWeight(.light)
-                                        }
-                                        
-                                    }
-                                    .padding(8)
-                                    .frame(width: 361, height: 64, alignment: .leading)
-                                    .background(.white)
-                                    .cornerRadius(8)
-                                    .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.06), radius: 1, x: 0, y: 1)
-                                    .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.1), radius: 1.5, x: 0, y: 1)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .inset(by: 0.5)
-                                            .stroke(Color(red: 0.93, green: 0.93, blue: 0.94), lineWidth: 1)
-                                    )
-                                }
-                                .position(x: geometry.size.width * 0.5, y: geometry.size.height / 1.75)
-                            }
+                            EventListUserView()
+                            .position(x: geometry.size.width * 0.5, y: geometry.size.height / 1.35)
                         }
                     }
                     .zIndex(-1)
