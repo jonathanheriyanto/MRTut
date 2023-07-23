@@ -19,6 +19,11 @@ struct StationGeneralView: View {
     let condensedBold = UIFont.systemFont(ofSize: 31, weight: .bold, width: .condensed)
     let condensedHeavy = UIFont.systemFont(ofSize: 24, weight: .heavy, width: .condensed)
     
+    @StateObject private var locationManager = LocationManager()
+    @StateObject private var notificationHandler = NotificationHandler()
+    @State private var nearestStation: String = ""
+    @State private var nearestDistance: String = ""
+    
     var body: some View {
         GeometryReader{ geometry in
             NavigationView{
@@ -32,7 +37,6 @@ struct StationGeneralView: View {
                             .frame(width: 393, height: 193)
                             .position(x: geometry.size.width * 0.5, y:geometry.size.height / 7.5)
                             .background(Color.clear)
-                        
                         HStack {
                             Text(vm.station.name)
                                 .font(Font(condensedBold))
@@ -230,7 +234,46 @@ struct StationGeneralView: View {
                 }
             }
         }
-        
+        .onAppear{
+            locationManager.startMonitoring(center: Regions.lebakBulusRegion, identifier: .lebakBulus)
+            locationManager.startMonitoring(center: Regions.fatmawatiRegion, identifier: .fatmawati)
+            locationManager.startMonitoring(center: Regions.cipeteRayaRegion, identifier: .cipeteRaya)
+            locationManager.startMonitoring(center: Regions.hajiNawiRegion, identifier: .hajiNawi)
+            locationManager.startMonitoring(center: Regions.blokARegion, identifier: .blokA)
+            locationManager.startMonitoring(center: Regions.blokMRegion, identifier: .blokM)
+            locationManager.startMonitoring(center: Regions.aseanRegion, identifier: .asean)
+            locationManager.startMonitoring(center: Regions.senayanRegion, identifier: .senayan)
+            locationManager.startMonitoring(center: Regions.istoraRegion, identifier: .istora)
+            locationManager.startMonitoring(center: Regions.benHilRegion, identifier: .benHil)
+            locationManager.startMonitoring(center: Regions.setiabudiRegion, identifier: .setiabudi)
+            locationManager.startMonitoring(center: Regions.dukuhAtasRegion, identifier: .dukuhAtas)
+            locationManager.startMonitoring(center: Regions.bundaranHIRegion, identifier: .bundaranHI)
+            
+            notificationHandler.requestUserNotification()
+        }
+        .onReceive(locationManager.$userLocation) { locations in
+            guard let userLocation = locations else {return }
+            
+            if let nearestRegionData = locationManager.calculateNearestRegion(userLocation: userLocation, regions: Stations.stations) {
+                let nearestRegion = nearestRegionData.region
+                let distance = nearestRegionData.distance
+                
+                if distance > 1000 {
+                    nearestDistance = String(format: "%.2f km", Float(distance)/1000)
+                } else {
+                    nearestDistance = String(format: "%.2f meters", Float(distance))
+                }
+                
+                nearestStation = nearestRegion.identifier
+                if let nearestStationIndex = vm.stations.firstIndex(where: {$0.name == nearestStation }) {
+                    tappedIndex = nearestStationIndex
+                    vm.station = vm.stations[tappedIndex]
+                }
+                
+                print("Nearest region: \(nearestRegion.identifier)")
+                print("Distance: \(distance) meters")
+            }
+        }
     }
 }
 

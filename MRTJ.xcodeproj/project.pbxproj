@@ -56,6 +56,9 @@
 		B11DAAE52A6C057F005332C8 /* ScheduleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DAAE42A6C057F005332C8 /* ScheduleListView.swift */; };
 		B125D0F32A6D748B003FD4CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B125D0F22A6D748B003FD4CB /* GoogleService-Info.plist */; };
 		B125D0F52A6D80FA003FD4CB /* EventListUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125D0F42A6D80FA003FD4CB /* EventListUserView.swift */; };
+		E1704EAE2A6D78BA00434FAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EAD2A6D78BA00434FAB /* LocationManager.swift */; };
+		E1704EB12A6D78F100434FAB /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EB02A6D78F100434FAB /* NotificationHandler.swift */; };
+		E1704EB32A6D793400434FAB /* ExtStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EB22A6D793400434FAB /* ExtStations.swift */; };
 		F683BCA12A6A2C6800CC71A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F683BC9E2A6A2C6800CC71A0 /* Assets.xcassets */; };
 		F683BCA22A6A2C6800CC71A0 /* pulse-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = F683BC9F2A6A2C6800CC71A0 /* pulse-animation.json */; };
 		F683BCA32A6A2C6800CC71A0 /* AssetName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F683BCA02A6A2C6800CC71A0 /* AssetName.swift */; };
@@ -90,6 +93,9 @@
 		B11DAAE42A6C057F005332C8 /* ScheduleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListView.swift; sourceTree = "<group>"; };
 		B125D0F22A6D748B003FD4CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B125D0F42A6D80FA003FD4CB /* EventListUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListUserView.swift; sourceTree = "<group>"; };
+		E1704EAD2A6D78BA00434FAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E1704EB02A6D78F100434FAB /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		E1704EB22A6D793400434FAB /* ExtStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtStations.swift; sourceTree = "<group>"; };
 		F683BC9E2A6A2C6800CC71A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F683BC9F2A6A2C6800CC71A0 /* pulse-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pulse-animation.json"; sourceTree = "<group>"; };
 		F683BCA02A6A2C6800CC71A0 /* AssetName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetName.swift; sourceTree = "<group>"; };
@@ -192,9 +198,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E1704EAC2A6D78B100434FAB /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				E1704EAD2A6D78BA00434FAB /* LocationManager.swift */,
+				E1704EB22A6D793400434FAB /* ExtStations.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		E1704EAF2A6D78D000434FAB /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				E1704EB02A6D78F100434FAB /* NotificationHandler.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		F683BC9C2A6A2C6800CC71A0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E1704EAF2A6D78D000434FAB /* Notification */,
+				E1704EAC2A6D78B100434FAB /* Location */,
 				38537C4C2A6C241800F498BB /* Component */,
 				F683BC9D2A6A2C6800CC71A0 /* Resources */,
 			);
@@ -374,14 +399,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1704EB32A6D793400434FAB /* ExtStations.swift in Sources */,
 				38B5401F2A6C2B8E0019AACF /* problemDetailSheet.swift in Sources */,
 				B125D0F52A6D80FA003FD4CB /* EventListUserView.swift in Sources */,
+				E1704EB12A6D78F100434FAB /* NotificationHandler.swift in Sources */,
 				38537C4F2A6C241800F498BB /* iconDescView.swift in Sources */,
 				F683BCAB2A6A2C7400CC71A0 /* StationInformationViewModel.swift in Sources */,
 				B11DAAB42A6A3562005332C8 /* Event.swift in Sources */,
 				53DD092F2A6C25F100DB84BD /* StationDetailView.swift in Sources */,
 				53DD09272A6C236800DB84BD /* AdminView.swift in Sources */,
 				380FC1E72A67B927004F16CB /* Persistence.swift in Sources */,
+				E1704EAE2A6D78BA00434FAB /* LocationManager.swift in Sources */,
 				53DD09312A6C263D00DB84BD /* EditStationView.swift in Sources */,
 				38B540272A6D72E50019AACF /* StationGeneralView.swift in Sources */,
 				380FC1E02A67B926004F16CB /* ContentView.swift in Sources */,
@@ -533,6 +561,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MRTJ/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "MRTJ needs to access your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "MRTJ needs to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MRTJ needs to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -572,6 +603,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MRTJ/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "MRTJ needs to access your location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "MRTJ needs to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MRTJ needs to access your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
